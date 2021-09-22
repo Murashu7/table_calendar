@@ -20,6 +20,7 @@ class TableCalendarBase extends StatefulWidget {
   final bool dowVisible;
   final Decoration? dowDecoration;
   final Decoration? rowDecoration;
+  final EdgeInsets? tablePadding;
   final TableBorder? tableBorder;
   final Duration formatAnimationDuration;
   final Curve formatAnimationCurve;
@@ -33,6 +34,7 @@ class TableCalendarBase extends StatefulWidget {
   final SwipeCallback? onVerticalSwipe;
   final void Function(DateTime focusedDay)? onPageChanged;
   final void Function(PageController pageController)? onCalendarCreated;
+  // final EdgeInsets calendarPadding;
 
   TableCalendarBase({
     Key? key,
@@ -48,6 +50,7 @@ class TableCalendarBase extends StatefulWidget {
     this.dowVisible = true,
     this.dowDecoration,
     this.rowDecoration,
+    this.tablePadding,
     this.tableBorder,
     this.formatAnimationDuration = const Duration(milliseconds: 200),
     this.formatAnimationCurve = Curves.linear,
@@ -68,6 +71,7 @@ class TableCalendarBase extends StatefulWidget {
     this.onVerticalSwipe,
     this.onPageChanged,
     this.onCalendarCreated,
+    // this.calendarPadding,
   })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
         assert(isSameDay(focusedDay, firstDay) || focusedDay.isAfter(firstDay)),
         assert(isSameDay(focusedDay, lastDay) || focusedDay.isBefore(lastDay)),
@@ -219,6 +223,7 @@ class _TableCalendarBaseState extends State<TableCalendarBase>
               rowHeight: widget.rowHeight,
               dowDecoration: widget.dowDecoration,
               rowDecoration: widget.rowDecoration,
+              tablePadding: widget.tablePadding,
               tableBorder: widget.tableBorder,
               onPageChanged: (index, focusedMonth) {
                 if (!_pageCallbackDisabled) {
@@ -244,6 +249,7 @@ class _TableCalendarBaseState extends State<TableCalendarBase>
               },
               dowBuilder: widget.dowBuilder,
               dayBuilder: widget.dayBuilder,
+              // calendarPadding: widget.calendarPadding,
             ),
           ),
         );

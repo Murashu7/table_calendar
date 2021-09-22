@@ -142,6 +142,9 @@ class CalendarStyle {
   /// Decoration for each interior row of day cells.
   final Decoration rowDecoration;
 
+  /// 追加
+  final EdgeInsets tablePadding;
+
   /// Border for the internal `Table` widget.
   final TableBorder tableBorder;
 
@@ -158,6 +161,7 @@ class CalendarStyle {
     this.markerMargin = const EdgeInsets.symmetric(horizontal: 0.3),
     this.markersAlignment = Alignment.bottomCenter,
     this.markersMaxCount = 4,
+    this.tablePadding = const EdgeInsets.all(0), // 追加
     this.cellMargin = const EdgeInsets.all(6.0),
     this.cellPadding = const EdgeInsets.all(0),
     this.cellAlignment = Alignment.center,

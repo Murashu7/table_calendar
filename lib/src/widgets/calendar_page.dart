@@ -9,6 +9,7 @@ class CalendarPage extends StatelessWidget {
   final List<DateTime> visibleDays;
   final Decoration? dowDecoration;
   final Decoration? rowDecoration;
+  final EdgeInsets? tablePadding;
   final TableBorder? tableBorder;
   final bool dowVisible;
 
@@ -19,6 +20,7 @@ class CalendarPage extends StatelessWidget {
     required this.dayBuilder,
     this.dowDecoration,
     this.rowDecoration,
+    this.tablePadding,
     this.tableBorder,
     this.dowVisible = true,
   })  : assert(!dowVisible || dowBuilder != null),
@@ -26,12 +28,15 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: tableBorder,
-      children: [
-        if (dowVisible) _buildDaysOfWeek(context),
-        ..._buildCalendarDays(context),
-      ],
+    return Padding(
+      padding: tablePadding!,
+      child: Table(
+        border: tableBorder,
+        children: [
+          if (dowVisible) _buildDaysOfWeek(context),
+          ..._buildCalendarDays(context),
+        ],
+      ),
     );
   }
 

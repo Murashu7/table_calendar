@@ -23,6 +23,15 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
         title: Text('TableCalendar - Basics'),
       ),
       body: TableCalendar(
+        calendarStyle: CalendarStyle(
+          /// 追加したテーブルパディング
+          tablePadding: EdgeInsets.only(
+            top: 16.0,
+            right: 32.0,
+            left: 32.0,
+            bottom: 16.0,
+          ),
+        ),
         firstDay: kFirstDay,
         lastDay: kLastDay,
         focusedDay: _focusedDay,
